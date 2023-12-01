@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "WledLib",
     platforms: [
-            .macOS(.v10_15) // Specify the minimum macOS version here
+            .macOS(.v10_15),
+            .iOS(.v13),
         ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
