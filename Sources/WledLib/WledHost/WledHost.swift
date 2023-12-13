@@ -9,4 +9,6 @@ import Foundation
 
 public protocol WledHost {
     var hostname:String { get }
+    
+    static func createDevice(name: String, domain: String) -> Self
 }

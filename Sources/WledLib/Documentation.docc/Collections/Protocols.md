@@ -9,7 +9,3 @@ Protocols of the data struct for sending and fetching the status of the WLED str
 - ``WledHttGet``
 - ``WledHTTPPost``
 - ``WledHTTPResponse``
-
-### WS
-
-- ``WledWebSocketData``

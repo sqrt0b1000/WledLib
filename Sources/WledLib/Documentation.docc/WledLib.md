@@ -43,3 +43,7 @@ Structs that are received through a web socket.
 ### Protocols
 
 - <doc:Protocols>
+
+### Update Protocols
+
+- <doc:UpdateProtocols>

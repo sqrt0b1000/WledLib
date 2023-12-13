@@ -7,6 +7,17 @@
 
 public struct State: Codable {
     
+    public var isOn: Bool?
+    public var brightness: UInt8?
+    public var transition: Int64?
+    public var selectedPresetId: Int64?
+    public var selectedPlaylistId: Int64?
+    public var nightlight: Nightlight?
+    public var liveDataOverride: Int64?
+    public var mainSegment: Int64?
+    public var segment: [Segment]?
+    public var debug: Bool?
+    
     public init(isOn: Bool? = nil, brightness: UInt8? = nil, transition: Int64? = nil, selectedPresetId: Int64? = nil, selectedPlaylistId: Int64? = nil, nightlight: Nightlight? = nil, liveDataOverride: Int64? = nil, mainSegment: Int64? = nil, segment: [Segment]? = nil, debug: Bool? = nil) {
         self.isOn = isOn
         self.brightness = brightness
@@ -19,18 +30,6 @@ public struct State: Codable {
         self.segment = segment
         self.debug = debug
     }
-    
-    public var isOn: Bool?
-    public var brightness: UInt8?
-    public var transition: Int64?
-    public var selectedPresetId: Int64?
-    public var selectedPlaylistId: Int64?
-    public var nightlight: Nightlight?
-    public var liveDataOverride: Int64?
-    public var mainSegment: Int64?
-    public var segment: [Segment]?
-    public var debug: Bool?
-    
     
     enum CodingKeys: String, CodingKey {
         case isOn = "on"

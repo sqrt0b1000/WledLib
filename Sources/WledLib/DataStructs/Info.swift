@@ -34,6 +34,58 @@ public struct Info: Codable {
     public var product : String?
     public var mac : String?
     
+    public init(
+        leds: Leds = Leds(),
+        wifi: Wifi = Wifi(),
+        version: String? = nil,
+        buildId: Int64? = nil,
+        name: String,
+        str: Bool? = nil,
+        udpPort: Int64? = nil,
+        isUpdatedLive: Bool? = nil,
+        lm: String? = nil,
+        lip: String? = nil,
+        websocketClientCount: Int64? = nil,
+        effectCount: Int64? = nil,
+        paletteCount: Int64? = nil,
+        fileSystem: FileSystem? = nil,
+        ndc: Int64? = nil,
+        platformName: String? = nil,
+        arduinoCoreVersion: String? = nil,
+        lwip: Int64? = nil,
+        freeHeap: Int64? = nil,
+        uptime: Int64? = nil,
+        opt: Int64? = nil,
+        brand: String? = nil,
+        product: String? = nil,
+        mac: String? = nil
+    ) {
+        self.leds = leds
+        self.wifi = wifi
+        self.version = version
+        self.buildId = buildId
+        self.name = name
+        self.str = str
+        self.udpPort = udpPort
+        self.isUpdatedLive = isUpdatedLive
+        self.lm = lm
+        self.lip = lip
+        self.websocketClientCount = websocketClientCount
+        self.effectCount = effectCount
+        self.paletteCount = paletteCount
+        self.fileSystem = fileSystem
+        self.ndc = ndc
+        self.platformName = platformName
+        self.arduinoCoreVersion = arduinoCoreVersion
+        self.lwip = lwip
+        self.freeHeap = freeHeap
+        self.uptime = uptime
+        self.opt = opt
+        self.brand = brand
+        self.product = product
+        self.mac = mac
+    }
+    
     
     enum CodingKeys: String, CodingKey {
         case leds
