@@ -11,7 +11,7 @@ import Logging
 
 fileprivate enum DiscoveryServiceConstants {
     static let LOGGER = Logger(label: "WledLib.DiscoveryService")
-    static let TYPE = "_wled._tcp."
+    static let TYPE = "_wled._tcp"
     static let DOMAIN = "local."
     static let QUEUE = DispatchQueue(label: "WledLib.DiscoveryService", qos: .userInitiated)
 }
@@ -54,7 +54,7 @@ public class DiscoveryService<D>: ObservableObject where D: WledHost, D: Hashabl
         
         #if DEBUG
         for result in newResults {
-            DiscoveryServiceConstants.LOGGER.info("\(String(reflecting: result))")
+            DiscoveryServiceConstants.LOGGER.debug("\(String(reflecting: result))")
         }
         #endif
         
@@ -90,7 +90,7 @@ public class DiscoveryService<D>: ObservableObject where D: WledHost, D: Hashabl
             if type == DiscoveryServiceConstants.TYPE {
                 return (name, domain)
             } else {
-                DiscoveryServiceConstants.LOGGER.error("Invalid service type")
+                DiscoveryServiceConstants.LOGGER.error("Invalid service type: \(type)")
             }
         } else {
             DiscoveryServiceConstants.LOGGER.error("Expected service as browser result")

@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import Logging
+
+enum WledHostConstants {
+    fileprivate static let LOGGER = Logger(label: "WledLib.WledHost")
+}
 
 extension WledHost {
+    
+    
     private static var HEADER_FIELD_CONTENT_TYPE: String { "Content-Type" }
     private static var CONTENT_TYPE_JSON: String { "application/json" }
     
@@ -48,6 +55,10 @@ extension WledHost {
         handleError: @escaping (_ error: Error) -> Void = {_ in}
     ) throws {
         
+        #if DEBUG
+        WledHostConstants.LOGGER.debug("Fetch data for: \(G.self)")
+        #endif
+        
         let url = try self.provideURL(connection: Connection.httpGet, path: G.GET_PATH)
         
         let request = try self.provideRequest(
@@ -71,11 +82,19 @@ extension WledHost {
             
             do {
                 let data = try JSONDecoder().decode(G.self, from: data)
+                #if DEBUG
+                WledHostConstants.LOGGER.debug("Data got: \(String(reflecting: data))")
+                #endif
                 handleData(data)
+                #if DEBUG
+                WledHostConstants.LOGGER.debug("Handle data successful")
+                #endif
             } catch {
                 handleError(error)
             }
+            
         }
+        
         
         task.resume()
     }
@@ -86,6 +105,11 @@ extension WledHost {
         handleData: @escaping (_ data: R) -> Void = {_ in},
         handleError: @escaping (_ error: Error) -> Void = {_ in}
     ) throws {
+        
+        
+        #if DEBUG
+        WledHostConstants.LOGGER.debug("Send data: \(String(reflecting: data))")
+        #endif
         
         let url = try self.provideURL(connection: Connection.httpPost, path: S.SET_PATH)
         
@@ -115,11 +139,19 @@ extension WledHost {
             }
             do {
                 let data = try JSONDecoder().decode(R.self, from: data)
+                #if DEBUG
+                WledHostConstants.LOGGER.debug("Respond received: \(String(reflecting: data))")
+                #endif
                 handleData(data)
+                #if DEBUG
+                WledHostConstants.LOGGER.debug("Response successful handled")
+                #endif
             } catch {
                 handleError(error)
             }
         }
+
+        
         task.resume()
     }
 }
