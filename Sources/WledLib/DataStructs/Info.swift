@@ -33,6 +33,7 @@ public struct Info: Codable {
     public var brand : String?
     public var product : String?
     public var mac : String?
+    public var ip : String?
     
     public init(
         leds: Leds = Leds(),
@@ -58,7 +59,8 @@ public struct Info: Codable {
         opt: Int64? = nil,
         brand: String? = nil,
         product: String? = nil,
-        mac: String? = nil
+        mac: String? = nil,
+        ip: String? = nil
     ) {
         self.leds = leds
         self.wifi = wifi
@@ -84,6 +86,7 @@ public struct Info: Codable {
         self.brand = brand
         self.product = product
         self.mac = mac
+        self.ip = ip
     }
     
     
@@ -112,5 +115,6 @@ public struct Info: Codable {
         case brand
         case product
         case mac
+        case ip
     }
 }
